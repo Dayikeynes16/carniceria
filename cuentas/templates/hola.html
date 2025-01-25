@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.6.14/dist/vuetify.min.css">
+  <style>
+
+
+    #app {
+      /* background-image: url('https://ebuifmauncgfjplsrmfb.supabase.co/storage/v1/object/public/invitation/B_4.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center; */
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0%;
+      margin: 0%;
+
+   
+
+    }
+
+    .content {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+      /* background: rgba(0, 0, 0, 0.3); Optional: slight dark overlay for better readability */
+      border-radius: 10px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      font-size: 1.5em;
+    }
+
+    p {
+      margin: 0 0 20px;
+      font-size: 1.2em;
+    }
+
+    .app2{
+      /* background-image: url('https://ebuifmauncgfjplsrmfb.supabase.co/storage/v1/object/public/invitation/B_4.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center; */
+      background-color: antiquewhite;
+      min-height: 100vh;
+      min-width: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0%;
+      margin: 0%;
+    }
+
+    .v-btn {
+      font-size: 1em;
+    }
+    .page_1{
+      background-image: url('https://ebuifmauncgfjplsrmfb.supabase.co/storage/v1/object/public/invitation/B_4.png') !important;
+  
+      min-height: 100vh !important;
+      min-width: 100vh !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0% !important;
+      margin: 0% !important;
+    }
+  </style>
+</head>
+<body >
+  <div id="app">
+    <div >
+      <div class="page_1" v-if="page === 1">
+        
+          <div class="content">
+              <h1>08 de Febrero 2025</h1>
+              <h2>Cristina y Guillermo</h2>
+              <p>¡No faltes a nuestra boda!</p>
+              <div>
+                <svg @click="next_page" color="black" xmlns="http://www.w3.org/2000/svg" width="60" height="60"  fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                </svg>
+              </div>
+           
+           
+          </div>
+          
+      </div>
+      <div v-if="page === 2" class="">
+        <div class="content">
+          <h1>Bienvenidos</h1>
+          <p>Estamos felices de compartir este momento especial con ustedes.</p>
+          <v-btn @click="next_page" color="primary">Siguiente</v-btn>
+        </div>
+      
+          
+        
+      </div>
+      <div v-if="page === 3">
+        <div class="content">
+          <h1>¡Gracias!</h1>
+          <p>Esperamos con ansias celebrar juntos este día tan especial.</p>
+          <div>
+            <svg @click="next_page" color="black" xmlns="http://www.w3.org/2000/svg" width="60" height="60"  fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+            </svg>
+          </div>
+        
+        </div>        
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@3.6.14/dist/vuetify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  <script src="//unpkg.com/element-plus"></script>
+  <script>
+    const { createApp, ref } = Vue
+    const { createVuetify } = Vuetify
+    const vuetify = createVuetify()
+
+    const app = createApp({
+      setup() {
+        const page = ref(1)
+
+        const next_page = () => {
+          page.value++
+          if (page.value > 3) {
+            page.value = 1
+          }
+        }
+
+        return {
+          page,
+          next_page
+        }
+      }
+    })
+
+    app.use(vuetify).mount('#app')
+  </script>
+</body>
+</html>
